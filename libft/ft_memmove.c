@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 16:08:56 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/24 12:16:09 by ndelmatt         ###   ########.fr       */
+/*   Created: 2015/11/24 12:01:31 by ndelmatt          #+#    #+#             */
+/*   Updated: 2015/11/24 12:14:00 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void		*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*td;
 	unsigned char	*ts;
+	unsigned char	*tmp;
 	size_t			i;
 
-	td = (unsigned char *)dst;
-	ts = (unsigned char *)src;
+	td = (unsigned char*)dst;
+	ts = (unsigned char*)src;
 	i = 0;
-	while (i < n)
+	if (!(tmp = malloc(sizeof(unsigned char) * len)))
+		return (NULL);
+	while (i < len)
 	{
-		td[i] = ts[i];
+		tmp[i] = ts[i];
 		i++;
 	}
+	i = 0;
+	while (i < len)
+	{
+		td[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
 	return (dst);
 }
