@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:18:37 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/25 19:38:32 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/25 19:52:18 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 //void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 //char		*ft_strmap(chr const *s, char (*f)(char));
 //char		*ft_strmapi(char const *s, char (*s)(unsigned int, char));
-//int			ft_strequ(char const *s1, char const *s2);
-//int			ft_strnequ(char const *s1, char const *s2, size_t n);
+//int		ft_strequ(char const *s1, char const *s2);
+//int		ft_strnequ(char const *s1, char const *s2, size_t n);
 //char		*ft_strsub(char const *s, unsigned int start, size_t len);
 //char		*ft_strjoin(char const *s1, char const *s2);
 //char		*ft_strtrim(char const *s);
@@ -62,8 +62,8 @@ void		ft_putendl(char const *s);
 void		ft_putnbr(int n);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char const *s, int fd);
-//void		ft_putendl_fd(char const *s, int fd);
-//void		ft_putnbr_fd(int n, int fd);
+void		ft_putendl_fd(char const *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
 
 /*Convertors*/
 int			ft_atoi(const char *str);
