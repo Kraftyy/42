@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 14:33:53 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/25 15:04:32 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/25 15:26:23 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*ft_strstr(const char *s1, const char *s2)
 	int		i;
 	int		y;
 
-	if (!s2)
+	if (!*s2)
 		return ((char *)s1);
 	i = 0;
 	while (s1[i])
