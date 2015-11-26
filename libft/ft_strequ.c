@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 14:55:59 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/26 15:28:27 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:40:11 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ int		ft_strequ(char const *s1, char const *s2)
 
 	i = 0;
 	while (s1[i] || s2[i])
-		i++;
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return (0);
+	}
 	if (s1[i] == '\0' && s2[i] == '\0')
 		return (1);
 	else
