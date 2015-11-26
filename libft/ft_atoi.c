@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:46:20 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/25 16:54:45 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/26 19:21:21 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		ft_atoi(const char *str)
 			|| *str == '\f' || *str == '\t')
 		str++;
 	sign = (*str == '-' ? 1 : 0);
+	if (*str == '-' || *str == '+')	
+		str++;
 	if (*str == '0')
 		str++;
 	while (*str && *str >= '0' && *str <= '9')

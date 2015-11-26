@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:04:13 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/24 14:42:10 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/26 19:38:00 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*ft_strcat(char *s1, const char *s2)
 	size_t	i;
 	size_t	y;
 
-	i = ft_strlen(s1) + 1;
+	i = ft_strlen(s1);
 	y = 0;
 	while (s2[y])
 	{
