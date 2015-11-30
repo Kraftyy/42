@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:22:50 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/24 12:33:17 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/30 16:39:42 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void		*ft_memchr(const void *s, int c, size_t n)
 	while (n--)
 	{
 		if (ts[i] == (unsigned char)c)
-			return (ts);
+			return (ts + i);
 		i++;
-		ts++;
 	}
 	return (NULL);
 }
