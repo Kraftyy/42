@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 15:59:44 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/26 17:26:09 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/30 19:59:17 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int			ft_blank(char const *s)
 	{
 		i++;
 	}
-	y = ft_strlen(s);
-	while (s[y] == ' ' || s[y] == '\t' || s[y] == '\n')
+	y = ft_strlen(s) - 1;
+	if (i > y)
+		return (0);
+	while ((s[y] == ' ' || s[y] == '\t' || s[y] == '\n') && y > 0)
 	{
 		i++;
 		y--;
@@ -39,11 +41,12 @@ char		*ft_strtrim(char const *s)
 
 	if (!(mem = (char *)malloc(sizeof(char) * ft_blank(s) + 1)))
 		return (NULL);
-	while (*s == ' ' || *s == '\n' || *s == '\t')
+	y = ft_blank(s);
+	while ((*s == ' ' || *s == '\n' || *s == '\t'))
 		s++;
 	i = 0;
-	y = ft_blank(s);
-	while (y)
+	ft_putnbr(y);
+	while (y > 0)
 	{
 		mem[i] = *s;
 		i++;
