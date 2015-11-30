@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 14:50:11 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/26 14:54:53 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/30 16:34:33 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (*s)
 	{
-		mem[i] = f(i, (char)s);
+		mem[i] = f(i, *s);
 		s++;
 		i++;
 	}
