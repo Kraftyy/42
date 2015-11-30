@@ -6,7 +6,7 @@
 #    By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 18:29:14 by ndelmatt          #+#    #+#              #
-#    Updated: 2015/11/26 19:11:50 by ndelmatt         ###   ########.fr        #
+#    Updated: 2015/11/30 22:27:34 by ndelmatt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ HEAD = -I libft.h
 SRC = ft_memset.c \
 	  ft_bzero.c \
 	  ft_memcpy.c \
+	  ft_memrcpy.c \
 	  ft_memccpy.c \
+	  ft_memmove.c \
 	  ft_memchr.c \
 	  ft_memcmp.c \
 	  ft_memalloc.c \
@@ -53,6 +55,7 @@ SRC = ft_memset.c \
 	  ft_putendl_fd.c \
 	  ft_putnbr_fd.c \
 	  ft_atoi.c \
+	  ft_itoa.c \
 	  ft_isalpha.c \
 	  ft_isdigit.c \
 	  ft_isalnum.c \
