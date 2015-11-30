@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 13:24:26 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/24 14:03:03 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/11/30 17:49:02 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,16 @@
 char		*ft_strncpy(char *dst, const char *src, size_t n)
 {
 	size_t		i;
-	char		*tmp;
 
 	i = 0;
-	if (!(tmp = malloc(sizeof(char) * ft_strlen(src))))
-		return (NULL);
-	while (i < n)
+	while (src[i] && i < n)
 	{
-		if (n >= ft_strlen(src))
-			tmp[i] = src[i];
-		else
-			tmp[i] = '\0';
+		dst[i] = src[i];
 		i++;
 	}
-	i = 0;
 	while (i < n)
 	{
-		dst[i] = tmp[i];
+		dst[i] = '\0';
 		i++;
 	}
 	return (dst);
