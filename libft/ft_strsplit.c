@@ -12,45 +12,61 @@
 
 #include "libft.h"
 
-static int		ft_countstr(char const *s, char c)
+static size_t		ft_countstr(char const *s, char c)
 {
-	int	i;
-	int count;
+	size_t	count;
+	size_t	i;
 
 	i = 0;
 	count = 0;
 	while (s[i])
 	{
-		if (s[i] != c)
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i])
 		{	
 			count++;
 			while (s[i] != c && s[i])
 				i++;
 		}
-		i++;
 	}
 	return (count);
 }	
 
-char		**ft_strsplit(char const *s, char c)
+static char		*ft_word(size_t size, char const *s)
 {
-	int		i;
-	int 	y;
+	char *res;
+	
+	res = ft_strnew(size);
+	res = ft_strncpy(res, s, size - 1);
+	return (res);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	size_t	count;
+	size_t 	i;
 	char	**mem;
 
-	if (!(mem = (char *)malloc(sizeof(char) * ft_countchar(s, c) + 1)))
+	if (!(mem = (char **)malloc(sizeof(char) * (ft_countstr(s, c) + 1))))
 		return (NULL);
+	mem[0] = 0;
+	if (ft_countstr(s,c) == 0)
+		return (mem);
 	i = 0;
-	y = 0;
-	while (s[i])
+	while (i <= ft_countstr(s, c))
 	{
-		if (s[i] != c)
+		while (*s == c)
+			s++;
+		count = 0;
+		if (*s != c)
 		{
-			mem[y] = s[i];
-			y++;
+			count = ft_strlenc(s, c);
+			mem[i] = ft_word(count + 1, s);
+			s += count; 
 		}
 		i++;
 	}
-	mem[y] = '\0';
+	mem[i] = 0;
 	return (mem);
 }
