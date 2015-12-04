@@ -6,7 +6,7 @@
 #    By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 18:29:14 by ndelmatt          #+#    #+#              #
-#    Updated: 2015/12/04 22:30:09 by ndelmatt         ###   ########.fr        #
+#    Updated: 2015/12/04 22:40:10 by ndelmatt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRC = ft_memset.c \
 	  ft_lstnew.c \
 	  ft_lstadd.c \
 	  ft_lstiter.c \
+	  ft_lstmap.c \
 
 OBJ = $(SRC:.c=.o)
 

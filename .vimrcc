@@ -1,0 +1,9 @@
+syntax on
+set number
+set autoindent
+set smartindent
+set statusline+=col:\ %c
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+let c_space_errors = 1
+inoremap ( ()<left>
