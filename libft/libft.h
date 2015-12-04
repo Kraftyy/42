@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:18:37 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/12/04 22:21:32 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/12/04 22:29:18 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ typedef	struct		s_list
 /*List functions*/
 t_list		*ft_lstnew(void const *content, size_t content_size);
 void		ft_lstadd(t_list **alst, t_list *new);
-
+void		ft_lstiter(t_list *lst, void (*f) (t_list *elem));
 #endif
