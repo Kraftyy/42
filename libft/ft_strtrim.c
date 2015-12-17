@@ -6,16 +6,16 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 15:59:44 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/30 19:59:17 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/12/17 11:53:15 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_blank(char const *s)
+static int			ft_blank(char const *s)
 {
-	int	i;
-	int	y;
+	int				i;
+	int				y;
 
 	i = 0;
 	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
@@ -33,11 +33,11 @@ int			ft_blank(char const *s)
 	return (ft_strlen(s) - i);
 }
 
-char		*ft_strtrim(char const *s)
+char				*ft_strtrim(char const *s)
 {
-	char	*mem;
-	int		i;
-	int		y;
+	char			*mem;
+	int				i;
+	int				y;
 
 	if (!(mem = (char *)malloc(sizeof(char) * ft_blank(s) + 1)))
 		return (NULL);

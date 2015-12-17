@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 14:43:02 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/30 16:33:25 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2015/12/17 10:56:55 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char		*ft_strmap(char const *s, char (*f)(char))
 		s++;
 		i++;
 	}
+	mem[i] = 0;
 	return (mem);
 }
