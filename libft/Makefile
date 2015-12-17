@@ -6,7 +6,7 @@
 #    By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 18:29:14 by ndelmatt          #+#    #+#              #
-#    Updated: 2015/12/04 22:40:10 by ndelmatt         ###   ########.fr        #
+#    Updated: 2015/12/17 15:26:46 by ndelmatt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC = ft_memset.c \
 	  ft_strjoin.c \
 	  ft_strsplit.c \
 	  ft_strtrim.c \
+	  ft_swap.c \
 	  ft_putchar.c \
 	  ft_putstr.c \
 	  ft_putendl.c \
@@ -64,9 +65,13 @@ SRC = ft_memset.c \
 	  ft_isalnum.c \
 	  ft_isascii.c \
 	  ft_isprint.c \
+	  ft_islower.c \
+	  ft_isupper.c \
 	  ft_toupper.c \
 	  ft_tolower.c \
 	  ft_lstnew.c \
+	  ft_lstdel.c \
+	  ft_lstdelone.c \
 	  ft_lstadd.c \
 	  ft_lstiter.c \
 	  ft_lstmap.c \
@@ -83,9 +88,9 @@ $(NAME): $(OBJ)
 	@gcc -Wall -Wextra -Werror $(HEAD) -o $@ -c $<
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
