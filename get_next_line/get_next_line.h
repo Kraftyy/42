@@ -6,11 +6,16 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:48:48 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/01/11 17:49:49 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/01/11 18:40:54 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _GET_NEXT_LINE_H
 # define _GET_NEXT_LINE_H
+
+# include "libft/includes/libft.h"
+# define BUFF_SIZE 32
+
+int					get_next_line(int const fd, char **line);
 
 #endif
