@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/01/12 14:12:47 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/01/12 14:28:06 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void				add_line(t_list *buff)
 
 int					get_next_line(int const fd, char **line)
 {
+	t_list			*head;	
+	t_out			buff;
 	int				ret;
-	static t_list	*buff;	
 
 	if (fd < 0 || !line || BUF_SIZE < 1)
 		return (-1);
