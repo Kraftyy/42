@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 15:41:29 by gwoodwar          #+#    #+#             */
-/*   Updated: 2016/01/11 17:10:20 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/02/24 11:27:59 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				fillit(char *av)
 	head = 0;
 	if ((fd = open(av, O_RDONLY)) == -1)
 		return (0);
-	nbread = 0;
+	nbread  = 0;
 	ret = 1;
 	while (ret > 0)
 	{
