@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:48:48 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/03/14 18:13:49 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/04/27 17:24:05 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ typedef struct		s_out
 {
 	int				fd;
 	char			*buff;
-}					t_out
+}					t_out;
 
 #endif
