@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/04/27 17:54:18 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/04/27 18:26:01 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int					get_next_line(int const fd, char **line)
 		return (-1);
 	*line = 0;
 	ret = read(fd, buff, BUFF_SIZE);
-	ft_putchar('t');
 	cursor = ft_strchr(buff, '\n');
 	printf("buff: %d\t%s\n", ret, buff);
 	printf("afterbn: %s\n", cursor);
