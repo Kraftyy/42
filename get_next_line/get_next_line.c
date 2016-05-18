@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/05/18 14:20:59 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/18 17:04:28 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-static t_list		checkfd(int const fd, t_list **headptr)
+static t_out		*check_fd(int const fd, t_list **headptr)
 {
 	t_list			*it;
 	t_list			*node;
@@ -32,28 +32,60 @@ static t_list		checkfd(int const fd, t_list **headptr)
 	if (!(node = ft_lstnew(&contentnew, sizeof(t_out))))
 	{
 		free(contentnew.buff);
-		return (NULL);	
+		return (NULL);
 	}
 	ft_lstadd(headptr, node);
 	return (CONTENT(node));
 }
+
+static int			fetch_buff(t_out *out, char **line)
+{
+	char			*tmp;
+	char			*cursor;
+
+	if (!*(out->buff))
+		return (0);
+	if (!(cursor = ft_strchr(out->buff, '\n')))
+		cursor = out->buff + BUFF_SIZE;
+	*cursor = 0;
+	tmp = *line;
+	if (!(*line = ft_strjoin(tmp, out->buff)))
+		return (-1);
+	free(tmp);
+	ft_strcpy(out->buff, cursor + 1);
+	if (out->buff + BUFF_SIZE == cursor)
+		return (0);
+	return (1);
+}
+
+static int			read_fd(int const fd, char **line, t_out *out)
+{
+	int				ret;
+
+	while ((ret = read(fd, out->buff, BUFF_SIZE)) > 0)
+	{
+		(out->buff)[ret] = 0;
+		ret = fetch_buff(out, line);
+		if (ret)
+			return (ret);
+	}
+	return (ret);
+}
+
 int					get_next_line(int const fd, char **line)
 {
-	static t_list	*head = NULL;	
+	static t_list	*head = NULL;
 	t_out			*out;
-	char			buff[BUFF_SIZE + 1];
 	int				ret;
-	char			*cursor;
+
 	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);
 	*line = 0;
-	ret = read(fd, buff, BUFF_SIZE);
-	buff[BUFF_SIZE]  = '\0';
-	cursor = ft_strchr(buff, '\n');
-	printf("buff: %d\t%s\n", ret, buff);
-	printf("afterbn: %s\n", cursor);
-//	if (ret != 0)
-//		add_line(buff);
+	if (!(out = check_fd(fd, &head)))
+		return (-1);
+	if ((ret = fetch_buff(out, line)))
+		return (ret);
+	ret = read_fd(fd, line, out);
 	return (ret);
 }
 
@@ -65,7 +97,7 @@ int					main(int ac, char **av)
 
 	fd = open(av[1], O_RDONLY);
 	while ((retgnl = get_next_line(fd, &line)) > 0)
-	   printf("retgnl: %d\tline: %s\n", retgnl, line);	
+		printf("retgnlmain: %d", retgnl);
 	fd = close(fd);
 	return (0);
 }
