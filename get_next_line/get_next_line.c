@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/04/27 18:26:01 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/18 14:20:59 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,41 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-//void				add_line(t_list *buff)
+static t_list		checkfd(int const fd, t_list **headptr)
+{
+	t_list			*it;
+	t_list			*node;
+	t_out			contentnew;
 
+	it = *headptr;
+	while (it)
+	{
+		if (CONTENT(it)->fdout == fd)
+			return (CONTENT(it));
+		it = it->next;
+	}
+	contentnew.fdout = fd;
+	contentnew.buff = ft_strnew(BUFF_SIZE);
+	if (!(node = ft_lstnew(&contentnew, sizeof(t_out))))
+	{
+		free(contentnew.buff);
+		return (NULL);	
+	}
+	ft_lstadd(headptr, node);
+	return (CONTENT(node));
+}
 int					get_next_line(int const fd, char **line)
 {
-//	static t_list	*head;	
-	char			buff[BUFF_SIZE];
+	static t_list	*head = NULL;	
+	t_out			*out;
+	char			buff[BUFF_SIZE + 1];
 	int				ret;
 	char			*cursor;
 	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);
 	*line = 0;
 	ret = read(fd, buff, BUFF_SIZE);
+	buff[BUFF_SIZE]  = '\0';
 	cursor = ft_strchr(buff, '\n');
 	printf("buff: %d\t%s\n", ret, buff);
 	printf("afterbn: %s\n", cursor);

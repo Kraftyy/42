@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:48:48 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/04/27 17:24:05 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/18 14:21:06 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int					get_next_line(int const fd, char **line);
 
 typedef struct		s_out
 {
-	int				fd;
+	int				fdout;
 	char			*buff;
 }					t_out;
 
