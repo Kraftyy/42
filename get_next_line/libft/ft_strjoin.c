@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 15:50:52 by ndelmatt          #+#    #+#             */
-/*   Updated: 2015/11/26 15:58:45 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/26 11:54:52 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		y;
 
+	if (!s1 || !s2)
+		return (ft_strdup(((s1) ? s1 : s2)));
 	if (!(mem = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
 						ft_strlen(s2) + 1))))
 		return (NULL);
