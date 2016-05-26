@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/05/26 14:35:49 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:08:10 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int			fetch_buff(t_out *out, char **line)
 		return (0);
 	if (!(cursor = ft_strchr(out->buff, '\n')))
 		cursor = out->buff + BUFF_SIZE;
-	*cursor = 0;
+	*cursor = '\0';
 	tmp = *line;
 	if (!(*line = ft_strjoin(tmp, out->buff)))
 		return (-1);
