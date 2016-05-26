@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/05/26 12:09:00 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/05/26 14:35:49 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,27 +87,4 @@ int					get_next_line(int const fd, char **line)
 		return (ret);
 	ret = read_fd(fd, line, out);
 	return (ret);
-}
-
-int					main(int ac, char **av)
-{
-	int				fd;
-	char			*line;
-	int				retgnl;
-	int				i;
-
-	fd = open(av[1], O_RDONLY);
-	i = 0;
-	while ((retgnl = get_next_line(fd, &line)) > 0)
-	{
-	ft_putnbr(retgnl);
-	ft_putchar('\n');
-		i++;
-		ft_putendl(line);
-	}
-	ft_putstr("AF WHILE\n");
-	ft_putnbr(retgnl);
-	ft_putchar('\n');
-	fd = close(fd);
-	return (0);
 }
