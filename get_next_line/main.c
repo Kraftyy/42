@@ -10,7 +10,10 @@ int		main(int ac, char **av)
 
 	fd = open(av[1], O_RDONLY);
 	while ((retgnl = get_next_line(fd, &line)) > 0 )
-	printf("%d\n", retgnl);			
+		ft_putendl("Retgnl");
+		ft_putnbr(retgnl);
+		ft_putchar('\n');
+		ft_putendl(line);
 	fd = close(fd);
 	return (0);	
 }
