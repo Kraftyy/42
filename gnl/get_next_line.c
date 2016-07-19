@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/07/19 18:12:31 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/07/19 18:53:24 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ int				get_next_line(const int fd, char **line)
 	if ((read_fd(fd, &ret, &(out.fdout), &(out.buff))) == 1)
 		return (-1);
 	size = 0;
-	i = 1;
-	while (out.buff[i++] && out.buff[i] != '\n')
+	i = -1;
+	while (out.buff[++i] && out.buff[i] != '\n')
 		size++;
 	if ((*line = (char*)malloc(sizeof(char) * (size + 1))) == NULL)
 		return (-1);
 	(*line)[size] = '\0';
 	i = -1;
-	while (i++ < size)
+	while (++i < size)
 		(*line)[i] = out.buff[i];
 	if (out.fdout == 1 && ft_strchr(out.buff, '\n') == NULL)
 		out.buff = ft_strdup("");
