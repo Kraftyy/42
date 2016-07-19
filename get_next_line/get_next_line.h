@@ -6,7 +6,7 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:48:48 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/05/26 14:41:58 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/07/19 17:45:20 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft/includes/libft.h"
 # define BUFF_SIZE		32
-# define CONTENT(x)		((t_out *)(x)->content)
 
 int					get_next_line(int const fd, char **line);
 

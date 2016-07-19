@@ -6,85 +6,84 @@
 /*   By: ndelmatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:40:58 by ndelmatt          #+#    #+#             */
-/*   Updated: 2016/05/26 16:08:10 by ndelmatt         ###   ########.fr       */
+/*   Updated: 2016/07/19 18:12:31 by ndelmatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
 
-static t_out		*check_fd(int const fd, t_list **headptr)
+static int		read_fd(const int fd, int *ret, int *end, char **str)
 {
-	t_list			*it;
-	t_list			*node;
-	t_out			contentnew;
+	char		buf[BUFF_SIZE + 1];
+	char		*tmp;
 
-	it = *headptr;
-	while (it)
+	if (!*str)
+		*str = ft_strdup("");
+	if ((ft_strchr(*str, '\n')) == NULL)
 	{
-		if (CONTENT(it)->fdout == fd)
-			return (CONTENT(it));
-		it = it->next;
+		while ((*ret = read(fd, buf, BUFF_SIZE)) > 0)
+		{
+			*end = 0;
+			buf[*ret] = '\0';
+			tmp = ft_strjoin(*str, buf);
+			free(*str);
+			*str = tmp;
+			if (ft_strchr(buf, '\n') != NULL)
+				break ;
+		}
+		if (*ret == 0)
+			*end = 1;
+		if (*ret < 0)
+			return (1);
 	}
-	contentnew.fdout = fd;
-	contentnew.buff = ft_strnew(BUFF_SIZE);
-	if (!(node = ft_lstnew(&contentnew, sizeof(t_out))))
-	{
-		free(contentnew.buff);
-		return (NULL);
-	}
-	ft_lstadd(headptr, node);
-	return (CONTENT(node));
+	return (0);
 }
 
-static int			fetch_buff(t_out *out, char **line)
+static int		ret_gnl(int *end, char **str, char **line)
 {
-	char			*tmp;
-	char			*cursor;
+	char		*tmp;
 
-	if (!*(out->buff))
-		return (0);
-	if (!(cursor = ft_strchr(out->buff, '\n')))
-		cursor = out->buff + BUFF_SIZE;
-	*cursor = '\0';
-	tmp = *line;
-	if (!(*line = ft_strjoin(tmp, out->buff)))
-		return (-1);
-	free(tmp);
-	ft_strcpy(out->buff, cursor + 1);
-	if (out->buff + BUFF_SIZE == cursor)
+	if (*str[0] && *str[0] == '\n')
+	{
+		(*line)[0] = '\0';
+		tmp = ft_strdup(*str + 1);
+		free(*str);
+		*str = tmp;
+		return (1);
+	}
+	if ((ft_strchr(*str, '\n')) != NULL)
+	{
+		tmp = ft_strdup((ft_strchr(*str, '\n') + 1));
+		free(*str);
+		*str = tmp;
+	}
+	if (*end == 1 && *line[0] == '\0')
 		return (0);
 	return (1);
 }
 
-static int			read_fd(int const fd, char **line, t_out *out)
+int				get_next_line(const int fd, char **line)
 {
+	static	t_out	out = (t_out){0, NULL};
 	int				ret;
+	int				size;
+	int				i;
 
-	while ((ret = read(fd, out->buff, BUFF_SIZE)) > 0)
-	{
-		(out->buff)[ret] = 0;
-		ret = fetch_buff(out, line);
-		if (ret)
-			break ;
-	}
-	return (ret);
-}
-
-int					get_next_line(int const fd, char **line)
-{
-	static t_list	*head = NULL;
-	t_out			*out;
-	int				ret;
-
-	if (fd < 0 || !line || BUFF_SIZE < 1)
+	if (fd < 0 || line == NULL)
 		return (-1);
-	*line = 0;
-	if (!(out = check_fd(fd, &head)))
+	if ((read_fd(fd, &ret, &(out.fdout), &(out.buff))) == 1)
 		return (-1);
-	if ((ret = fetch_buff(out, line)))
-		return (ret);
-	ret = read_fd(fd, line, out);
-	return (ret);
+	size = 0;
+	i = 1;
+	while (out.buff[i++] && out.buff[i] != '\n')
+		size++;
+	if ((*line = (char*)malloc(sizeof(char) * (size + 1))) == NULL)
+		return (-1);
+	(*line)[size] = '\0';
+	i = -1;
+	while (i++ < size)
+		(*line)[i] = out.buff[i];
+	if (out.fdout == 1 && ft_strchr(out.buff, '\n') == NULL)
+		out.buff = ft_strdup("");
+	return (ret_gnl(&(out.fdout), &(out.buff), line));
 }
